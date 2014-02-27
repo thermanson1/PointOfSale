@@ -15,21 +15,21 @@ public class Product {
     private String productDescription;
     private double unitPrice;
     
-    private DiscountStrategy discountStrategy;
-    
-    public Product(String prodId, String prodDesc, double UPrice, DiscountStrategy discountStrategy){
-        this.productDescription = prodDesc;
-        this.productId = prodId;
-        this.unitPrice = UPrice;  
-        this.discountStrategy = discountStrategy;
+    private DiscountStrategy discount;
+
+    public Product(String productId, String productDescription, double unitPrice, DiscountStrategy discount) {
+        this.productId = productId;
+        this.productDescription = productDescription;
+        this.unitPrice = unitPrice;
+        this.discount = discount;
     }
 
-    public DiscountStrategy getDiscountStrategy() {
-        return discountStrategy;
+    public DiscountStrategy getDiscount() {
+        return discount;
     }
 
-    public void setDiscountStrategy(DiscountStrategy discountStrategy) {
-        this.discountStrategy = discountStrategy;
+    public void setDiscount(DiscountStrategy discount) {
+        this.discount = discount;
     }
 
     public String getProductId() {
