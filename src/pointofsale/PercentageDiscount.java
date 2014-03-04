@@ -11,7 +11,7 @@ package pointofsale;
  * @author Teraesa
  */
 public class PercentageDiscount implements DiscountStrategy{
-    private double percentDiscount;
+    private double percentDiscount = .10;
     
     public PercentageDiscount(double percent){
         this.percentDiscount = percent;

@@ -11,13 +11,15 @@ package pointofsale;
  * @author Teraesa
  */
 public class LineItem {
-    private double subTotal;
+    private Product product;
+    private int quantity;
     
     DataStrategy database;
     
-    public LineItem(double subTotal, DataStrategy database, int quantity){
-        this.subTotal = subTotal;
+    public LineItem(Product product, DataStrategy database, int quantity){
+        this.product = product;
         this.database = database;
+        this.quantity = quantity;
     }
     
     private Product FindProduct(String productID){

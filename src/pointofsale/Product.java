@@ -61,4 +61,3 @@ public class Product {
     
     
 }
-//line item should only store the subtotal, everything else should be stored elsewhere
