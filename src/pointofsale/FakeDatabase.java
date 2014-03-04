@@ -10,7 +10,7 @@ package pointofsale;
  *
  * @author Teraesa
  */
-public class FakeDatabase {
+public class FakeDatabase implements DataStrategy{
     private final Customer[] customers = {
         new Customer("Rachel", "Green", "G548624"),
         new Customer("Ross", "Gellar", "G692157"),
@@ -30,6 +30,7 @@ public class FakeDatabase {
         new Product("G707", "Blender", 39.99, new PercentageDiscount(.20))
     };
     
+    @Override
     public Product findProduct(String productID){
         if(productID == null || productID.length() == 0){
             System.out.println("The product ID is invalid");
@@ -45,6 +46,7 @@ public class FakeDatabase {
         return product;
     }
     
+    @Override
     public Customer findCustomer(String custID){
         if(custID == null || custID.length() == 0){
             System.out.println("The customer ID is invalid");

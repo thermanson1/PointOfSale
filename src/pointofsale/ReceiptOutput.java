@@ -10,6 +10,10 @@ package pointofsale;
  *
  * @author Teraesa
  */
-public class CashRegister {
-    public NewSale()
+public class ReceiptOutput implements ReceiptOutputStrategy{
+    
+    @Override
+    public void OutputReceipt(String SaleInfo){
+        System.out.println(SaleInfo);
+    }
 }

@@ -10,6 +10,7 @@ package pointofsale;
  *
  * @author Teraesa
  */
-public class CashRegister {
-    public NewSale()
+public interface DataStrategy {
+    public abstract Product findProduct(String productID);
+    public abstract Customer findCustomer(String custID);
 }

@@ -10,6 +10,7 @@ package pointofsale;
  *
  * @author Teraesa
  */
-public class CashRegister {
-    public NewSale()
+public interface ReceiptOutputStrategy {
+    
+    public abstract void OutputReceipt(String saleInfo);
 }
