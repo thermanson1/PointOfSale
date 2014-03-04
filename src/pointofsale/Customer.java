@@ -13,8 +13,9 @@ package pointofsale;
 public class Customer {
     private String firstName;
     private String lastName;
+    private String custID;
     
-    public Customer(String firstName, String lastName){
+    public Customer(String firstName, String lastName, String custId){
         this.firstName= firstName;
         this.lastName = lastName;
     }
@@ -33,6 +34,14 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getCustID() {
+        return custID;
+    }
+
+    public void setCustID(String custID) {
+        this.custID = custID;
     }
     
     
