@@ -11,41 +11,26 @@ package pointofsale;
  * @author Teraesa
  */
 public class LineItem {
-    private Product product;
-    int quantity;
+    private double subTotal;
+    
     DataStrategy database;
     
-    public LineItem(DataStrategy database, Product product, int qty){
-        this.product = product;
-        this.quantity = qty;
+    public LineItem(double subTotal, DataStrategy database, int quantity){
+        this.subTotal = subTotal;
         this.database = database;
     }
     
     private Product FindProduct(String productID){
         return database.findProduct(productID);
     }
-    public double getOriginalPriceSubTtl(){
+    public double getOriginalPriceSubTtl(Product product, int quantity){
         return product.getUnitPrice() * quantity;
     }
-    public double getDiscountAmt(){
+    public double getDiscountAmt(Product product, int quantity){
         return product.getDiscount().getDiscountAmt(product.getUnitPrice(), quantity);
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+    
 
     public DataStrategy getDatabase() {
         return database;

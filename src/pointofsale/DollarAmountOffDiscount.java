@@ -12,8 +12,6 @@ package pointofsale;
  */
 public class DollarAmountOffDiscount implements DiscountStrategy {
     private double dollarAmtOff = 1.00;
-    private double productCost;
-    private double quantity;
     
     public DollarAmountOffDiscount(double dollarsOff){
         this.dollarAmtOff = dollarsOff;
@@ -21,6 +19,10 @@ public class DollarAmountOffDiscount implements DiscountStrategy {
     @Override
     public double getDiscountAmt(double productCost, int quantity){
         return (productCost * quantity) - dollarAmtOff;
+    }
+    @Override 
+    public double getDiscountTotalOff(double unitPrice, int quantity){
+        return (unitPrice*quantity)-((unitPrice*quantity)-dollarAmtOff);
     }
 
  
@@ -33,25 +35,6 @@ public class DollarAmountOffDiscount implements DiscountStrategy {
     }
 
 
-    @Override
-    public double getProductCost() {
-        return productCost;
-    }
-
-    @Override
-    public void setProductCost(double productCost) {
-        this.productCost = productCost;
-    }
-
-    @Override
-    public double getQuantity() {
-        return quantity;
-    }
-
-    @Override
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
-    }
-    
+   
     
 }

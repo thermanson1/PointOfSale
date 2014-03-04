@@ -11,47 +11,21 @@ package pointofsale;
  * @author Teraesa
  */
 public class PercentageDiscount implements DiscountStrategy{
-    private double percent = 0.10;
-    private double productCost;
-    private double quantity;
+    private double percentDiscount;
     
-    public PercentageDiscount(double rate){
-        this.percent = rate;
+    public PercentageDiscount(double percent){
+        this.percentDiscount = percent;
     }
     @Override
-    public double getDiscountAmt(double productCost, int quantity){
-        return productCost * quantity * percent;
+    public double getDiscountAmt(double unitPrice, int quantity){
+        return unitPrice * quantity * percentDiscount;
+    }
+    @Override
+    public double getDiscountTotalOff(double unitPrice, int quantity){
+        return (unitPrice * quantity) - (unitPrice*quantity*percentDiscount);
     }
 
  
-    public double getPercent() {
-        return percent;
-    }
-
-    public void setPercent(double percent) {
-        this.percent = percent;
-    }
-
-
-    @Override
-    public double getProductCost() {
-        return productCost;
-    }
-
-    @Override
-    public void setProductCost(double productCost) {
-        this.productCost = productCost;
-    }
-
-    @Override
-    public double getQuantity() {
-        return quantity;
-    }
-
-    @Override
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
-    }
     
     
     

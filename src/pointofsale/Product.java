@@ -14,7 +14,6 @@ public class Product {
     private String productId;
     private String productDescription;
     private double unitPrice;
-    
     private DiscountStrategy discount;
 
     public Product(String productId, String productDescription, double unitPrice, DiscountStrategy discount) {
@@ -54,6 +53,9 @@ public class Product {
 
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
+    }
+    public double getDiscountAmt(int quantity){
+        return getDiscount().getDiscountAmt(unitPrice, quantity);
     }
     
     

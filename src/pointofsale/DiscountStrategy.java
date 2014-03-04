@@ -13,9 +13,6 @@ package pointofsale;
 public interface DiscountStrategy {
 
     public abstract double getDiscountAmt(double unitPrice, int quantity);
-    public abstract double getProductCost();
-    public abstract double getQuantity();
-    public abstract void setProductCost(double productCost);
-    public abstract void setQuantity(double quantity);
+    public abstract double getDiscountTotalOff(double unitPrice, int quantity);
 
 }

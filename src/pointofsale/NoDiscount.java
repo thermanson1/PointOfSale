@@ -12,35 +12,14 @@ package pointofsale;
  */
 public class NoDiscount implements DiscountStrategy{
 
-    private double quantity;
-    private double productCost;
-
-    
-
-   
     @Override
-    public double getQuantity() {
-        return quantity;
+    public double getDiscountTotalOff(double unitPrice, int quantity){
+        return 0;
     }
-
-    @Override
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getProductCost() {
-        return productCost;
-    }
-
-    public void setProductCost(double productCost) {
-        this.productCost = productCost;
-    }
-    
-
     
     
     @Override
-    public double getDiscountAmt(double uPrice, int quantity){
+    public double getDiscountAmt(double unitPrice, int quantity){
         return 0;
     }
     
