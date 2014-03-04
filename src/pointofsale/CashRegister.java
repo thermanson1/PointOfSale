@@ -11,5 +11,5 @@ package pointofsale;
  * @author Teraesa
  */
 public class CashRegister {
-    public NewSale()
+    
 }
