@@ -55,6 +55,12 @@ public class Receipt {
    }
    
    public void addToArray(LineItem item){
+       LineItem[] tempItems = new LineItem[lineItems.length + 1];
+       System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
+       tempItems[lineItems.length] = item;
+       lineItems = tempItems;
+   }
+   public void outputReceipt(){
        
    }
 }

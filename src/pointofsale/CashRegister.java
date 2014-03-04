@@ -11,5 +11,17 @@ package pointofsale;
  * @author Teraesa
  */
 public class CashRegister {
+    private Receipt receipt;
     
+    public void startNewSale(String custId, DataStrategy database, ReceiptOutputStrategy output){
+        receipt = new Receipt(custId, database, output);
+    }
+     public void addItem(String productId, int quantity){
+        receipt.addLineItem(productId, quantity);
+    }
+    
+    public void endOfSalePrintReceipt(){
+        receipt.outputReceipt();
+    }
+   
 }
