@@ -16,19 +16,19 @@ public class LineItem {
     
     DataStrategy database;
     
-    public LineItem(Product product, DataStrategy database, int quantity){
-        this.product = product;
+    public LineItem(String productId, DataStrategy database, int quantity){
+        this.product = findProduct(productId);
         this.database = database;
         this.quantity = quantity;
     }
     
-    private Product FindProduct(String productID){
+    private Product findProduct(String productID){
         return database.findProduct(productID);
     }
-    public double getOriginalPriceSubTtl(Product product, int quantity){
+    public double getOriginalPriceSubTtl(){
         return product.getUnitPrice() * quantity;
     }
-    public double getDiscountAmt(Product product, int quantity){
+    public double getDiscountAmt(){
         return product.getDiscount().getDiscountAmt(product.getUnitPrice(), quantity);
     }
 

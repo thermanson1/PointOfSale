@@ -33,5 +33,28 @@ public class Receipt {
        return cust;
    }
    
+   public double getTransactionDiscount(){
+       double totalDiscount = 0.0;
+       for (LineItem item : lineItems){
+           totalDiscount = totalDiscount + item.getDiscountAmt();
+       }
+       return totalDiscount;
+   }
    
+   public double getTotalBeforeDiscount(){
+       double subTotal = 0.0;
+       for (LineItem item : lineItems){
+           subTotal = subTotal + item.getOriginalPriceSubTtl();
+       }
+       return subTotal;
+   }
+   
+   public void addLineItem(String productId, int quantity){
+       LineItem item = new LineItem(productId, database, quantity);
+       addToArray(item);
+   }
+   
+   public void addToArray(LineItem item){
+       
+   }
 }
