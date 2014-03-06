@@ -18,11 +18,11 @@ public class DollarAmountOffDiscount implements DiscountStrategy {
     }
     @Override
     public double getDiscountAmt(double productCost, int quantity){
-        return (productCost * quantity) - dollarAmtOff;
+        return dollarAmtOff;
     }
     @Override 
     public double getDiscountTotalOff(double unitPrice, int quantity){
-        return (unitPrice*quantity)-((unitPrice*quantity)-dollarAmtOff);
+        return dollarAmtOff;
     }
 
  

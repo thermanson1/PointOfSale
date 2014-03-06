@@ -11,16 +11,16 @@ package pointofsale;
  * @author Teraesa
  */
 public class NoDiscount implements DiscountStrategy{
-
+    private double discountAmt=0.00;
     @Override
     public double getDiscountTotalOff(double unitPrice, int quantity){
-        return 0;
+        return discountAmt;
     }
     
     
     @Override
     public double getDiscountAmt(double unitPrice, int quantity){
-        return 0;
+        return discountAmt;
     }
     
     

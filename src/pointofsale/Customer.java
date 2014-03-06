@@ -18,6 +18,7 @@ public class Customer {
     public Customer(String firstName, String lastName, String custId){
         this.firstName= firstName;
         this.lastName = lastName;
+        this.custID = custId;
     }
 
     public String getFirstName() {

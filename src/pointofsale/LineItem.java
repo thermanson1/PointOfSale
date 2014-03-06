@@ -17,13 +17,14 @@ public class LineItem {
     DataStrategy database;
     
     public LineItem(String productId, DataStrategy database, int quantity){
-        this.product = findProduct(productId);
         this.database = database;
+        this.product = findProduct(productId);
+        
         this.quantity = quantity;
     }
     
-    private Product findProduct(String productID){
-        return database.findProduct(productID);
+    private Product findProduct(String productId){
+        return database.findProduct(productId);
     }
     public double getOriginalPriceSubTtl(){
         return product.getUnitPrice() * quantity;

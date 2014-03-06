@@ -11,15 +11,17 @@ package pointofsale;
  * @author Teraesa
  */
 public class Receipt {
-    private DataStrategy database;
-    private Customer customer;
-    private ReceiptOutputStrategy output;
-    private LineItem[] lineItems;
+    private final DataStrategy database;
+    private final Customer customer;
+    private final ReceiptOutputStrategy output;
+    private LineItem[] lineItems = new LineItem[0];
+    private int receiptNumber;
     
    public Receipt(String custID, DataStrategy database, ReceiptOutputStrategy output){
        this.database = database;
        this.customer = findCustomer(custID);
        this.output = output;
+       receiptNumber++;
    }
    
    public Customer findCustomer(String custID){
@@ -61,6 +63,36 @@ public class Receipt {
        lineItems = tempItems;
    }
    public void outputReceipt(){
+       String tab = "\t";
+       String tabTab = "\t\t";
+       String newLine = "\n";
+       
+       //heading
+       StringBuilder receiptPrint = new StringBuilder("Thank you for Shopping at Kohl's Department Store!\n\n");
+       receiptPrint.append("Customer Name: ").append(customer.getFirstName()).append(customer.getLastName()).append(newLine);
+       receiptPrint.append("Receipt Number: ").append(receiptNumber).append(newLine);
+       
+       receiptPrint.append("Product ID\tItem\tPrice\tQuantity\tSubtotal\tDiscount").append(newLine);
+       receiptPrint.append("************************************************************************************").append(newLine);
+       
+       for (LineItem item : lineItems){
+           receiptPrint.append(item.getProduct().getProductId()).append("\t");
+           receiptPrint.append(item.getProduct().getProductDescription()).append("\t");
+           receiptPrint.append(item.getProduct().getUnitPrice()).append("\t");
+           receiptPrint.append(item.getQuantity()).append("\t\t");
+           receiptPrint.append(item.getOriginalPriceSubTtl()).append("\t\t");
+           receiptPrint.append(item.getDiscountAmt()).append(newLine);
+       }
+       double netTotal = getTotalBeforeDiscount();
+       double discountAmt = getTransactionDiscount();
+       double totalOwed = netTotal - discountAmt;
+       receiptPrint.append(newLine);
+       receiptPrint.append(newLine);
+       receiptPrint.append("\t\t\t\t\t\t\t\tNet Total: ").append(netTotal).append(newLine);
+       receiptPrint.append("\t\t\t\t\t\t\t\tAmount Saved: ").append(discountAmt).append(newLine);
+       receiptPrint.append("\t\t\t\t\t\t\t\tTotal Due: ").append(totalOwed).append(newLine);
+       
+       output.OutputReceipt(receiptPrint.toString());
        
    }
 }
